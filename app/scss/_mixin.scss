@@ -1,0 +1,39 @@
+@mixin iped{
+  padding-top:60px;
+  padding-bottom: 60px;
+}
+
+@mixin mobile{
+  padding-top:40px;
+  padding-bottom: 40px;
+}
+
+
+$screen-xxs-max: 480px;
+$screen-xs-max: 640px;
+$screen-sm-max: 767px;
+$screen-md-max: 980px;
+$screen-lg-max: 1024px;
+$screen-hm-max: 1080px;
+
+/* Create the mixin (usually in a separate .scss file) */
+@mixin breakpoint($media) {
+  @if $media == xxs {
+    @media only screen and (max-width: $screen-xxs-max) { @content; }
+  }
+  @if $media == xs {
+    @media only screen and (max-width: $screen-xs-max) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (max-width: $screen-sm-max) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (max-width: $screen-md-max) { @content; }
+  }
+  @else if $media == hm {
+    @media only screen and (max-width: $screen-hm-max) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (max-width: $screen-lg-max) { @content; }
+  }
+}

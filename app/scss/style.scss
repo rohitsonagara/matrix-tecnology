@@ -1,0 +1,2086 @@
+@use "variable" as vars;
+@use "mixin" as mix;
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("../font/Poppins-SemiBold.eot");
+  src:
+    url("../font/Poppins-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("../font/Poppins-SemiBold.woff2") format("woff2"),
+    url("../font/Poppins-SemiBold.woff") format("woff"),
+    url("../font/Poppins-SemiBold.ttf") format("truetype"),
+    url("../font/Poppins-SemiBold.svg#Poppins-SemiBold") format("svg");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("../font/Roboto-Bold.eot");
+  src:
+    url("../font/Roboto-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../font/Roboto-Bold.woff2") format("woff2"),
+    url("../font/Roboto-Bold.woff") format("woff"),
+    url("../font/Roboto-Bold.ttf") format("truetype"),
+    url("../font/Roboto-Bold.svg#Roboto-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("../font/Roboto-Medium.eot");
+  src:
+    url("../font/Roboto-Medium.eot?#iefix") format("embedded-opentype"),
+    url("../font/Roboto-Medium.woff2") format("woff2"),
+    url("../font/Roboto-Medium.woff") format("woff"),
+    url("../font/Roboto-Medium.ttf") format("truetype"),
+    url("../font/Roboto-Medium.svg#Roboto-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("../font/Roboto-Regular.eot");
+  src:
+    url("../font/Roboto-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../font/Roboto-Regular.woff2") format("woff2"),
+    url("../font/Roboto-Regular.woff") format("woff"),
+    url("../font/Roboto-Regular.ttf") format("truetype"),
+    url("../font/Roboto-Regular.svg#Roboto-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background: vars.$bg-color;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+.container {
+  float: left;
+  width: 100%;
+  height: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.row {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+img {
+  max-width: 100%;
+}
+.table {
+  display: table;
+  height: 100%;
+  width: 100%;
+  table-layout: fixed;
+}
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  @include mix.breakpoint(lg) {
+    gap: 20px;
+  }
+
+  @include mix.breakpoint(sm) {
+    flex-wrap: wrap;
+  }
+}
+
+.flex-two {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+::placeholder {
+  font-size: 16px;
+  line-height: 18px;
+  color: vars.$bg-color;
+  font-family: "Roboto-Regular";
+}
+span {
+  font-size: 16px;
+  line-height: 18px;
+  color: vars.$bg-color;
+  font-family: "Roboto-Bold";
+  border-left: 4px solid vars.$yellow;
+  padding-left: 20px;
+}
+
+h2 {
+  font-size: 60px;
+  line-height: 70px;
+  color: vars.$bg-color;
+  font-family: "Poppins-SemiBold";
+  text-transform: capitalize;
+  margin-top: 20px;
+}
+
+nav#menu {
+  display: none;
+}
+
+.animatable {
+  /* initially hide animatable objects */
+  visibility: hidden;
+
+  /* initially pause animatable objects their animations */
+  animation-play-state: paused;
+}
+
+/* show objects being animated */
+.animated {
+  visibility: visible;
+
+  animation-fill-mode: both;
+  animation-duration: 1s;
+  animation-play-state: running;
+}
+
+.mm-panel {
+  background: vars.$white;
+  text-align: center;
+}
+.mm-listview a {
+  font-size: 16px;
+  line-height: 18px;
+  color: vars.$bg-color;
+  font-family: "Roboto-Bold";
+}
+.mm-listview a:hover {
+  color: vars.$yellow;
+}
+.mm-listitem:after {
+  border-bottom: 2px solid #bg-color;
+  left: 0;
+}
+.mm-navbar span {
+  font-size: 25px;
+  padding-left: 0;
+  border-left: 0;
+}
+.mm-wrapper__blocker {
+  background: rgba(0, 0, 0, 0);
+}
+/*header section */
+
+.top {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background: vars.$bg-color;
+
+  @include mix.breakpoint(sm) {
+    display: none;
+  }
+
+  .row {
+    max-width: 1440px;
+    margin: 0 auto;
+
+    .left {
+      float: left;
+      height: 100%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      .small-fx {
+        display: flex;
+        gap: 20px;
+
+        p {
+          color: vars.$white;
+          font-family: "Roboto-Bold";
+          font-size: 14px;
+          line-height: 16px;
+
+          span {
+            color: vars.$yellow;
+            font-family: "Roboto-Bold";
+            font-size: 14px;
+            line-height: 16px;
+            margin-right: 10px;
+            padding-left: 0;
+            border: 0;
+          }
+        }
+
+        a {
+          display: inline-block;
+          color: vars.$white;
+          font-family: "Roboto-Bold";
+          font-size: 14px;
+          line-height: 16px;
+
+          span {
+            color: vars.$yellow;
+            font-family: "Roboto-Bold";
+            font-size: 14px;
+            line-height: 16px;
+            margin-right: 10px;
+            border-left: 4px solid vars.$br;
+          }
+        }
+      }
+    }
+
+    .right {
+      float: right;
+      height: 100%;
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      ul {
+        list-style: none;
+
+        li {
+          display: inline-block;
+          margin-left: 20px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+          a {
+            font-size: 14px;
+            line-height: 16px;
+            color: vars.$grey;
+            font-family: "Roboto-Bold";
+
+            &:hover {
+              color: vars.$yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.mobile-menu {
+  a {
+    img {
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+}
+.mm-wrapper--opened {
+  .mobile-menu {
+    a {
+      img {
+        &:last-child {
+          display: block;
+        }
+        &:first-child {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.mobile-menu {
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 20px;
+  z-index: 99;
+}
+.mobile-menu a {
+  display: inline-block;
+}
+.mobile-menu {
+  display: block;
+}
+.mm-wrapper--opened nav#menu {
+  display: block;
+}
+
+header {
+  background: vars.$white;
+
+  .mobile-menu {
+    display: none;
+    @include mix.breakpoint(sm) {
+      display: block;
+      position: absolute;
+      top: 30px;
+    }
+  }
+
+  .bottom {
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    @include mix.breakpoint(xxs) {
+      .table {
+        &:first-child {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+    }
+
+    .row {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: table-cell;
+      vertical-align: middle;
+      width: 120px;
+      @include mix.breakpoint(md) {
+        width: 110px;
+      }
+
+      @include mix.breakpoint(sm) {
+        text-align: center;
+        width: 80px;
+      }
+
+      @include mix.breakpoint(xxs) {
+        width: 100%;
+      }
+
+      a {
+        display: inline-block;
+
+        img {
+          width: 150px;
+        }
+      }
+    }
+
+    nav {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+
+      @include mix.breakpoint(sm) {
+        display: none;
+      }
+
+      li {
+        display: inline-block;
+        margin-left: 45px;
+
+        @include mix.breakpoint(md) {
+          margin-left: 6px;
+        }
+        &:first-child {
+          margin-left: 0;
+        }
+
+        a {
+          font-size: 16px;
+          line-height: 18px;
+          color: vars.$bg-color;
+          font-family: "Roboto-Bold";
+
+          &:hover {
+            color: vars.$yellow;
+          }
+        }
+      }
+    }
+
+    .search {
+      display: table-cell;
+      vertical-align: middle;
+      width: 295px;
+
+      @include mix.breakpoint(sm) {
+        width: 70px;
+      }
+
+      @include mix.breakpoint(xxs) {
+        .table {
+          display: table;
+          height: 100%;
+          width: 100%;
+          table-layout: flex;
+        }
+      }
+
+      @include mix.breakpoint(xxs) {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .table-cell {
+        width: 213px;
+
+        @include mix.breakpoint(xs) {
+          width: 128px;
+        }
+
+        &:first-child {
+          width: 60px;
+        }
+
+        input[type="search"] {
+          height: 60px;
+          width: 100%;
+          border: 0;
+          background: url(../images/search.png) no-repeat center center;
+          background-color: vars.$light;
+          cursor: pointer;
+
+          &:hover {
+            background-color: vars.$yellow;
+          }
+        }
+
+        input[type="submit"] {
+          height: 60px;
+          width: 100%;
+          background-color: vars.$yellow;
+          font-size: 16px;
+          line-height: 18px;
+          color: vars.$bg-color;
+          margin-left: 20px;
+          border: 0;
+          position: relative;
+
+          &:hover {
+            background-color: vars.$light;
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            background: url(../images/arrow.png) no-repeat center;
+            height: 15px;
+            width: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.banner-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: vars.$ligh-white;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+  @include mix.breakpoint(sm) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .flex {
+    margin-top: 60px;
+    align-items: center;
+
+    @include mix.breakpoint(lg) {
+      margin-top: 40px;
+    }
+    @include mix.breakpoint(sm) {
+      margin-top: 0;
+    }
+
+    .text-side {
+      width: 60%;
+      @include mix.breakpoint(sm) {
+        width: 100%;
+        order: 2;
+      }
+
+      .max {
+        max-width: 710px;
+        margin: 0 0 0 auto;
+        width: 100%;
+
+        @include mix.breakpoint(sm) {
+          max-width: none;
+          width: 100%;
+          text-align: center;
+        }
+
+        span {
+          font-size: 16px;
+          line-height: 18px;
+          color: vars.$bg-color;
+          font-family: "Roboto-Bold";
+          border-left: 4px solid vars.$yellow;
+          padding-left: 20px;
+        }
+
+        h1 {
+          font-size: 100px;
+          line-height: 102px;
+          color: vars.$bg-color;
+          font-family: "Poppins-SemiBold";
+          text-transform: capitalize;
+          margin-top: 30px;
+
+          @include mix.breakpoint(hm) {
+            font-size: 85px;
+          }
+
+          @include mix.breakpoint(lg) {
+            font-size: 80px;
+            line-height: 100px;
+            margin-top: 20px;
+          }
+
+          @include mix.breakpoint(md) {
+            font-size: 60px;
+            line-height: 70px;
+          }
+
+          @include mix.breakpoint(xs) {
+            font-size: 36px;
+            line-height: 40px;
+          }
+        }
+        p {
+          font-size: 20px;
+          line-height: 25px;
+          color: vars.$bg-color;
+          font-family: "Roboto-Medium";
+          margin-top: 15px;
+
+          @include mix.breakpoint(lg) {
+            margin-top: 25px;
+          }
+        }
+
+        .btn {
+          margin: 35px 0;
+
+          @include mix.breakpoint(xs) {
+            margin: 10px auto 0;
+          }
+
+          a {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 18px;
+            color: vars.$white;
+            font-family: "Roboto-Bold";
+            background: vars.$bg-color;
+            padding: 18px 45px;
+            margin-left: 30px;
+
+            &:first-child {
+              margin-left: 0;
+              background: vars.$yellow;
+              color: vars.$bg-color;
+
+              &:hover {
+                background: vars.$bg-color;
+                color: vars.$white;
+              }
+
+              @include mix.breakpoint(xs) {
+                margin-top: 0;
+              }
+            }
+
+            &:hover {
+              background: vars.$yellow;
+              color: vars.$bg-color;
+            }
+
+            @include mix.breakpoint(md) {
+              padding: 15px 30px;
+              margin-left: 10px;
+            }
+
+            @include mix.breakpoint(xs) {
+              margin-top: 25px;
+            }
+            i {
+              padding-left: 5px;
+              position: relative;
+
+              &:before {
+                content: "\f138";
+                position: absolute;
+                right: -16px;
+                top: 3px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .img-side {
+      width: 40%;
+      position: relative;
+
+      @include mix.breakpoint(sm) {
+        width: 100%;
+        order: 1;
+      }
+
+      &:after {
+        position: absolute;
+        content: "";
+        background: url(../images/round.png) no-repeat left top;
+        width: 140px;
+        height: 140px;
+        left: 8%;
+        top: -6%;
+
+        @include mix.breakpoint(sm) {
+          position: inherits;
+          background: none;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        content: "";
+        background: url(../images/round-2.png) no-repeat left top;
+        width: 103px;
+        height: 103px;
+        right: 10%;
+        bottom: 2%;
+        transform: translate(-10%, -2%);
+
+        @include mix.breakpoint(sm) {
+          position: inherits;
+          background: none;
+        }
+      }
+      img {
+        position: relative;
+        z-index: 9;
+
+        @include mix.breakpoint(sm) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.logos {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  background: vars.$ligh-white;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+
+  @include mix.breakpoint(sm) {
+    @include mix.mobile;
+  }
+
+  .item {
+    background: vars.$white;
+    padding: 30px;
+
+    @include mix.breakpoint(hm) {
+      padding: 16px;
+    }
+
+      @include mix.breakpoint(md) {
+      padding: 0;
+    }
+  }
+
+  .owl-carousel .owl-item img {
+    width: auto;
+  }
+
+  span {
+    border: 0;
+    padding-left: 0;
+  }
+
+  img {
+    width: 150px;
+  }
+}
+
+/*section-two*/
+
+.section-two {
+  padding-top: 80px;
+  background: vars.$white;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+  @include mix.breakpoint(sm) {
+    @include mix.mobile;
+  }
+
+  .flex {
+    margin-top: 60px;
+    gap: 173px;
+
+    @include mix.breakpoint(lg) {
+      gap: 105px;
+    }
+
+    img {
+      @include mix.breakpoint(sm) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @include mix.breakpoint(sm) {
+      margin-top: 0;
+      gap: 20px;
+    }
+
+    .img-part {
+      width: 45%;
+      text-align: right;
+
+      @include mix.breakpoint(sm) {
+        width: 100%;
+      }
+
+      .img-two {
+        position: relative;
+        top: -160px;
+        right: -86px;
+
+        @include mix.breakpoint(md) {
+          top: -95px;
+        }
+        @include mix.breakpoint(sm) {
+          position: static;
+        }
+      }
+    }
+
+    .text-part {
+      width: 55%;
+      @include mix.breakpoint(sm) {
+        width: 100%;
+      }
+
+      .width {
+        /*max-width: 645px;*/
+        margin: 80px auto 0 0;
+
+        @include mix.breakpoint(md) {
+          margin: 0 auto;
+        }
+
+        @include mix.breakpoint(sm) {
+          text-align: center;
+        }
+
+        h2 {
+          @include mix.breakpoint(hm) {
+            font-size: 43px;
+            line-height: 55px;
+          }
+          @include mix.breakpoint(xxs) {
+            font-size: 30px;
+            line-height: 40px;
+          }
+        }
+
+        p {
+          font-size: 20px;
+          line-height: 28px;
+          color: vars.$bg-color;
+          font-family: "Roboto-Medium";
+          max-width: 491px;
+          margin: 25px auto 0 0;
+
+          @include mix.breakpoint(md) {
+            margin: 20px auto 0 0;
+          }
+          @include mix.breakpoint(sm) {
+            max-width: none;
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+
+      .down-text {
+        max-width: 525px;
+        margin: 30px auto 0 0;
+
+        @include mix.breakpoint(md) {
+          margin: 15px auto 0 0;
+        }
+        @include mix.breakpoint(sm) {
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .flex-two {
+          margin-top: 25px;
+          &:first-child {
+            margin-top: 0;
+          }
+
+          a {
+            display: inline-block;
+            font-size: 25px;
+            line-height: 30px;
+            color: vars.$yellow;
+
+            &:hover {
+              color: vars.$bg-color;
+            }
+          }
+
+          p {
+            font-size: 16px;
+            line-height: 25px;
+            color: vars.$bg-color;
+            font-family: "Roboto-Regular";
+          }
+        }
+      }
+    }
+  }
+}
+/*section-two end*/
+
+/*banner-second*/
+
+.banner-four {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: url(../images/banner-second.png) no-repeat top center;
+  height: 800px;
+  position: relative;
+  background-size: cover;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+  @include mix.breakpoint(sm) {
+    @include mix.mobile;
+  }
+
+  a.play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    trasform: translate;
+    transform: translate(-50%, -50%);
+  }
+
+  .flex-two {
+    @include mix.breakpoint(sm) {
+      flex-wrap: wrap;
+    }
+
+    .white {
+      background: vars.$white;
+      padding: 15px 20px;
+      max-width: 480px;
+      position: absolute;
+      bottom: -8%;
+      right: 36%;
+      z-index: 9;
+      transform: translate(-36%, 8%);
+
+      @include mix.breakpoint(lg) {
+        bottom: -8%;
+        right: 34%;
+        z-index: 9;
+      }
+      @include mix.breakpoint(sm) {
+        width: 100%;
+        max-width: none;
+        bottom: 0;
+        right: 0;
+        transform: translate(0, 0);
+      }
+
+      .divide {
+        gap: 20px;
+        display: flex;
+        align-items: center;
+
+        h2 {
+          font-size: 24px;
+          line-height: 26px;
+        }
+        p {
+          font-size: 14px;
+          line-height: 18px;
+          color: vars.$bg-color;
+          font-family: "Roboto-Medium";
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .orange {
+      @extend.white;
+      background: vars.$yellow;
+      position: absolute;
+      bottom: -8%;
+      right: 11%;
+      z-index: 9;
+      transform: translate(-11%, 8%);
+
+      @include mix.breakpoint(hm) {
+        right: 3%;
+        transform: translate(-3%, 8%);
+      }
+      @include mix.breakpoint(lg) {
+        right: 0;
+      }
+      @include mix.breakpoint(sm) {
+        transform: translate(0, 0);
+        bottom: -17%;
+      }
+    }
+  }
+}
+/*banner-four end*/
+
+/*section-five start*/
+
+.section-five {
+  padding-top: 110px;
+  padding-bottom: 80px;
+  background: vars.$white;
+  position: relative;
+  z-index: -9;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+
+  @include mix.breakpoint(sm) {
+    @include mix.mobile;
+    padding-top: 110px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .flex {
+    margin-top: 60px;
+
+    .box {
+      position: relative;
+      width: 50%;
+      &:hover .bx-content {
+        display: block;
+      }
+      @include mix.breakpoint(sm) {
+        width: 100%;
+      }
+
+      .bx-content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 30px 30px;
+        background: vars.$bg-color;
+        display: none;
+
+        .sm {
+          max-width: 530px;
+          margin: 60px auto 0;
+
+          @include mix.breakpoint(lg) {
+            margin: 35px auto 0;
+          }
+
+          @include mix.breakpoint(md) {
+            margin: 25px auto 0;
+          }
+
+          @include mix.breakpoint(xxs) {
+            margin: 0 auto 0;
+          }
+
+          span {
+            color: vars.$white;
+            padding-left: 20px;
+          }
+          h2 {
+            color: vars.$white;
+
+            @include mix.breakpoint(md) {
+              font-size: 40px;
+              line-height: 35px;
+              margin-top: 13px;
+            }
+
+            @include mix.breakpoint(xxs) {
+              font-size: 32px;
+              line-height: 35px;
+              margin-top: 13px;
+            }
+          }
+          a {
+            display: inline-block;
+            text-align: left;
+            color: #ffc13e;
+            position: relative;
+            font-size: 22px;
+            right: -76%;
+            top: 20%;
+
+            @include mix.breakpoint(lg) {
+              right: -89%;
+            }
+            @include mix.breakpoint(md) {
+              right: -83%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .flex {
+    &:last-child {
+      margin-top: 30px;
+      gap: 30px;
+
+      @include mix.breakpoint(lg) {
+        gap: 20px;
+      }
+    }
+    @include mix.breakpoint(lg) {
+      gap: 20px;
+    }
+
+    .bx-width {
+      width: 50%;
+
+      @include mix.breakpoint(sm) {
+        width: 100%;
+      }
+
+      .bx-two {
+        width: 100%;
+        position: relative;
+
+        &:hover .bx-two-content {
+          display: block;
+          transition: 0.3s;
+        }
+
+        .bx-two-content {
+          padding: 20px 10px;
+          background: vars.$white;
+          position: absolute;
+          max-width: 317px;
+          margin: 0 auto 0 0;
+          bottom: 0%;
+          display: none;
+
+          @include mix.breakpoint(hm) {
+            max-width: 219px;
+            padding: 20px 2px;
+          }
+          @include mix.breakpoint(xxs) {
+            top: 0;
+          }
+
+          h3 {
+            font-size: 24px;
+            line-height: 26px;
+            color: vars.$bg-color;
+            font-family: "Poppins-SemiBold";
+            margin-top: 10px;
+
+            @include mix.breakpoint(xs) {
+              font-size: 20px;
+              line-height: 26px;
+            }
+          }
+        }
+      }
+      .flex-two {
+        gap: 30px;
+
+        @include mix.breakpoint(lg) {
+          gap: 20px;
+        }
+      }
+    }
+  }
+}
+
+/*section-five end*/
+
+/*section-six start*/
+
+.section-six {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+
+  @include mix.breakpoint(sm) {
+    @include mix.mobile;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: url(../images/sep.png) no-repeat;
+    height: 410px;
+    width: 322px;
+    right: 0%;
+    z-index: -9;
+    top: -1%;
+
+    @include mix.breakpoint(hm) {
+      height: 200px;
+      width: 322px;
+      background-size: 200px 100%;
+      right: -12%;
+    }
+    @include mix.breakpoint(sm) {
+      display: none;
+      position: static;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: url(../images/sep-2.png) no-repeat;
+    width: 604px;
+    top: 0;
+    height: 219px;
+    left: 0;
+
+    @include mix.breakpoint(hm) {
+      width: 325px;
+      top: 0;
+      height: 219px;
+      background-size: 100% 212px;
+      left: 0;
+    }
+    @include mix.breakpoint(sm) {
+      display: none;
+      position: static;
+    }
+  }
+  .head {
+    max-width: 410px;
+    margin: 0 auto;
+    text-align: center;
+
+    span {
+      color: vars.$yellow;
+      padding-left: 0;
+      border: 0;
+      text-align: center;
+    }
+    h2 {
+      color: vars.$white;
+      margin-top: 10px;
+      position: relative;
+      z-index: 9;
+
+      @include mix.breakpoint(xxs) {
+        font-size: 40px;
+        line-height: 50px;
+      }
+    }
+  }
+
+  .flex {
+    margin-top: 60px;
+    position: relative;
+
+    @include mix.breakpoint(lg) {
+      margin-top: 40px;
+    }
+
+    &:after {
+      content: "";
+      background: url(../images/down.png) no-repeat;
+      height: 216px;
+      width: 216px;
+      position: absolute;
+      left: 0;
+      bottom: -61%;
+
+      @include mix.breakpoint(sm) {
+        display: none;
+        position: static;
+      }
+    }
+
+    .part {
+      width: 33.33%;
+
+      @include mix.breakpoint(sm) {
+        width: 100%;
+        text-align: center;
+      }
+      .part-img {
+        position: relative;
+        text-align: center;
+        @include mix.breakpoint(sm) {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      span {
+        position: absolute;
+        background: vars.$yellow;
+        border: 0;
+        padding-left: 0;
+        text-align: center;
+        padding: 10px;
+        left: 30%;
+        top: 5%;
+
+        @include mix.breakpoint(md) {
+          left: 12%;
+        }
+
+        @include mix.breakpoint(xxs) {
+          left: 17%;
+        }
+      }
+
+      h3 {
+        font-size: 30px;
+        line-height: 32px;
+        color: vars.$white;
+        font-family: "Poppins-SemiBold";
+        margin-top: 15px;
+
+        @include mix.breakpoint(md) {
+          font-size: 23px;
+          line-height: 30px;
+        }
+      }
+      p {
+        color: vars.$dark-grey;
+        font-size: 16px;
+        line-height: 28px;
+        font-family: "Roboto-Regular";
+        max-width: 300px;
+        margin: 15px auto;
+
+        @include mix.breakpoint(sm) {
+          width: 100%;
+          text-align: center;
+          max-width: none;
+        }
+      }
+    }
+  }
+}
+
+/*section-six end*/
+
+/*section-seven start*/
+
+.section-seven {
+  padding-top: 110px;
+  padding-bottom: 135px;
+  background: vars.$light-white;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+  @include mix.breakpoint(lg) {
+    @include mix.mobile;
+  }
+
+  .center {
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .profile {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      background: url(../images/small-one.png) no-repeat;
+      width: 40px;
+      height: 40px;
+      bottom: 2%;
+      right: 44%;
+
+      @include mix.breakpoint(xs) {
+        right: 35%;
+      }
+      @include mix.breakpoint(xxs) {
+        right: 25%;
+      }
+    }
+    &:before {
+      position: absolute;
+      content: "";
+      background: url(../images/small.png) no-repeat;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .profile-content {
+    max-width: 1090px;
+    margin: 25px auto 0;
+    padding: 40px 20px;
+    background: vars.$white;
+
+    @include mix.breakpoint(xxs) {
+      padding: 20px;
+    }
+
+    a {
+      font-size: 20px;
+      line-height: 25px;
+      color: vars.$yellow;
+      margin-left: 5px;
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:hover {
+        color: vars.$bg-color;
+      }
+    }
+
+    p {
+      font-size: 40px;
+      line-height: 50px;
+      max-width: 912px;
+      margin: 10px auto 0;
+      color: vars.$bg-color;
+      font-family: "Poppins-SemiBold";
+
+      @include mix.breakpoint(sm) {
+        max-width: none;
+        width: 100%;
+        font-size: 30px;
+        line-height: 40px;
+        margin: 10px auto;
+      }
+      @include mix.breakpoint(xxs) {
+        font-size: 20px;
+        line-height: 35px;
+      }
+    }
+  }
+
+  .tabs {
+    padding: 10px 20px;
+    margin: 30px auto 0;
+    text-align: center;
+
+    ul {
+      list-style: none;
+
+      li {
+        display: inline-block;
+        margin-left: 20px;
+
+        &.active {
+          background: vars.$yellow;
+          color: vars.$bg-color;
+
+          h2 {
+            color: vars.$bg-color;
+          }
+          p {
+            color: vars.$bg-color;
+          }
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      a {
+        display: inline-block;
+      }
+
+      .padding {
+        padding: 15px 20px;
+
+        h2 {
+          font-size: 24px;
+          line-height: 26px;
+          color: vars.$dark-white;
+          font-family: "Poppins-SemiBold";
+          margin-top: 0;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 20px;
+          color: vars.$dark-white;
+          margin-top: 10px;
+          font-family: "Roboto-Bold";
+        }
+      }
+    }
+  }
+}
+
+/*section-seven-end*/
+
+/*section-eight start*/
+
+.section-eight {
+  overflow: hidden;
+  padding: 60px 0;
+  background: white;
+  white-space: nowrap;
+  position: relative;
+ 
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    z-index: 2;
+  }
+
+  &:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+  }
+  &:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+  }
+
+  .section-eight:hover .logo-slide {
+    animation-play-state: paused;
+  }
+  .logo-slide {
+    display: inline-block;
+    animation: 35s slide infinite linear;
+  }
+  .logo-slide img {
+    height: 50px;
+    margin: 0 40px;
+  }
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.section-three {
+  padding-top: 80px;
+  padding-bottom: 140px;
+  background: vars.$white;
+
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+  @include mix.breakpoint(sm) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .flex {
+    margin-top: 60px;
+
+    @include mix.breakpoint(lg) {
+      margin-top: 40px;
+    }
+
+    @include mix.breakpoint(sm) {
+      margin-top: 25px;
+    }
+
+    .text {
+      width: 55%;
+      align-items: center;
+
+      @include mix.breakpoint(sm) {
+        width: 100%;
+      }
+
+      .full {
+        max-width: 614px;
+        width: 100%;
+        margin: 0 0 0 auto;
+
+        @include mix.breakpoint(sm) {
+          max-width: none;
+          width: 100%;
+          text-align: center;
+        }
+
+        span {
+          font-size: 16px;
+          line-height: 18px;
+          color: vars.$bg-color;
+          font-family: "Roboto-Bold";
+        }
+
+        h2 {
+          font-size: 60px;
+          line-height: 65px;
+          color: vars.$bg-color;
+          font-family: "Poppins-SemiBold";
+          text-transform: capitalize;
+          margin-top: 30px;
+          text-transform: capitalize;
+
+          @include mix.breakpoint(hm) {
+            font-size: 50px;
+            line-height: 63px;
+          }
+          @include mix.breakpoint(md) {
+            font-size: 38px;
+            line-height: 50px;
+            margin-top: 20px;
+          }
+
+          @include mix.breakpoint(xs) {
+            font-size: 26px;
+            line-height: 40px;
+          }
+        }
+
+        p {
+          font-size: 20px;
+          line-height: 28px;
+          color: vars.$bg-color;
+          font-family: "Roboto-Regular";
+          max-width: 555px;
+          margin: 15px auto 0 0;
+        }
+
+        .second {
+          max-width: 560px;
+          margin: 15px auto 0 0;
+          p {
+            font-size: 16px;
+            line-height: 25px;
+            color: vars.$bg-color;
+            font-family: "Roboto-Regular";
+          }
+        }
+        a {
+          display: inline-block;
+          font-size: 16px;
+          line-height: 18px;
+          font-family: "Roboto-Bold";
+          background: vars.$yellow;
+          color: vars.$bg-color;
+          padding: 15px 30px;
+          margin-top: 30px;
+          position: relative;
+
+          &:hover {
+            background: vars.$bg-color;
+            color: vars.$white;
+          }
+
+        }
+      }
+    }
+
+    .form-side {
+      width: 45%;
+
+      @include mix.breakpoint(sm) {
+        width: 100%;
+        order: 1;
+      }
+
+      .width {
+        max-width: 415px;
+        margin: 0 auto;
+        max-width: 415px;
+        margin: 0 auto;
+        box-shadow: 0px 0px 5px -1px #d5d5d5;
+        padding: 42px 30px;
+        position: relative;
+
+        @include mix.breakpoint(sm) {
+          width: 100%;
+          max-width: none;
+          text-align: center;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          background: url(../images/black.png) no-repeat bottom right;
+          width: 225px;
+          height: 71px;
+          right: 7%;
+          bottom: -9%;
+
+          @include mix.breakpoint(sm) {
+            display: none;
+            position: static;
+          }
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          background: url(../images/up.png) no-repeat left top;
+          width: 84px;
+          height: 84px;
+          top: -9%;
+
+          @include mix.breakpoint(sm) {
+            display: none;
+            position: static;
+          }
+        }
+
+        .name {
+          max-width: 410px;
+          width: 100%;
+          margin: 0 auto;
+
+          @include mix.breakpoint(sm) {
+            width: 100%;
+            max-width: none;
+            text-align: center;
+          }
+
+          input[type="text"] {
+            width: 100%;
+            height: 65px;
+            padding: 0 20px;
+            background: vars.$ligh-white;
+            font-size: 16px;
+            line-height: 18px;
+            color: vars.$bg-color;
+            font-family: "Roboto-Regular";
+            border: 0;
+          }
+        }
+
+        .email {
+          max-width: 410px;
+          width: 100%;
+          margin: 0 auto;
+
+          @include mix.breakpoint(sm) {
+            width: 100%;
+            max-width: none;
+            text-align: center;
+          }
+
+          input[type="email"] {
+            width: 100%;
+            height: 65px;
+            padding: 0 20px;
+            background: vars.$ligh-white;
+            font-size: 16px;
+            line-height: 18px;
+            color: vars.$bg-color;
+            font-family: "Roboto-Regular";
+            border: 0;
+            margin-top: 15px;
+          }
+        }
+
+        .msg {
+          max-width: 410px;
+          width: 100%;
+          margin: 0 auto;
+
+          @include mix.breakpoint(sm) {
+            width: 100%;
+            max-width: none;
+            text-align: center;
+          }
+          textarea {
+            width: 100%;
+            height: 150px;
+            padding: 20px 20px;
+            font-size: 16px;
+            line-height: 18px;
+            color: vars.$bg-color;
+            font-family: "Roboto-Regular";
+            margin-top: 15px;
+            resize: none;
+            background: vars.$ligh-white;
+            border: 0;
+          }
+        }
+
+        .submit {
+          max-width: 173px;
+          margin: 25px auto 0;
+
+          input[type="submit"] {
+            height: 60px;
+            width: 100%;
+            border: 2px slid vars.$white;
+            /*background: url(../images/arrow.png) no-repeat right;*/
+            background-color: vars.$yellow;
+            font-size: 16px;
+            line-height: 18px;
+            color: vars.$bg-color;
+            margin-left: 20px;
+            border: 0;
+            cursor: pointer;
+
+            &:hover {
+              background: vars.$bg-color;
+              color: vars.$white;
+            }
+
+            @include mix.breakpoint(xxs) {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  @include mix.breakpoint(lg) {
+    @include mix.iped;
+  }
+
+  @include mix.breakpoint(sm) {
+    @include mix.mobile;
+  }
+  .row {
+    max-width: 1180px;
+    margin: 0 auto;
+
+    .ft-fx {
+      align-items: center;
+      display: flex;
+      gap: 20px;
+      position: absolute;
+      top: -12%;
+      left: 18%;
+
+      @include mix.breakpoint(hm) {
+        left: 7%;
+      }
+
+      @include mix.breakpoint(lg) {
+        left: 5%;
+      }
+      @include mix.breakpoint(sm) {
+        display: block;
+        position: static;
+      }
+
+      .left-white {
+        background: vars.$white;
+        padding: 0 15px;
+        max-width: 570px;
+        margin: 0 auto 0 0;
+
+        @include mix.breakpoint(sm) {
+          max-width: none;
+          padding: 20px;
+        }
+
+        @include mix.breakpoint(xxs) {
+          padding: 10px;
+        }
+        .flex-two{
+             @include mix.breakpoint(xs) {
+            align-items: center;
+            }
+           
+        }
+
+        .im {
+          img {
+            width: 50px;
+
+             @include mix.breakpoint(xs) {
+              width: 120px;
+            }
+
+            @include mix.breakpoint(xxs) {
+              width: 70px;
+            }
+          }
+        }
+
+        .tx {
+             @include mix.breakpoint(xs) {
+              width: 100%;
+            }
+          span {
+            font-size: 16px;
+            line-height: 18px;
+            color: vars.$yellow;
+            font-family: "Roboto-Bold";
+            padding-left: 0;
+            border: 0;
+          }
+
+          h3 {
+            font-size: 24px;
+            line-height: 26px;
+            color: vars.$bg-color;
+            margin-top: 15px;
+            font-family: "Poppins-SemiBold";
+
+
+            @include mix.breakpoint( md){
+                font-size: 18px;
+            }
+
+            @include mix.breakpoint(xs) {
+              font-size: 30px;
+            }
+
+             @include mix.breakpoint(xxs) {
+              font-size: 23px;
+            }
+            
+
+          }
+        }
+      }
+
+      .right-orange {
+        @extend .left-white;
+        background: vars.$yellow;
+
+        @include mix.breakpoint(sm) {
+          margin-top: 20px;
+        }
+
+        .tx {
+          span {
+            color: vars.$bg-color;
+          }
+        }
+        .im {
+          text-align: right;
+        }
+      }
+    }
+
+    .flex-two {
+      margin-top: 60px;
+      align-items: normal;
+
+      @include mix.breakpoint(sm) {
+        &:nth-child(2) {
+          flex-wrap: wrap;
+          text-align: center;
+          margin-top: 20px;
+        }
+      }
+
+      .ft-box {
+        max-width: 180px;
+        width: 100%;
+        margin: 0 auto;
+
+        @include mix.breakpoint(sm) {
+          max-width: 200px;
+
+          &:nth-child(3) {
+            margin-top: 25px;
+          }
+          &:nth-child(4) {
+            margin-top: 25px;
+          }
+        }
+
+        h2 {
+          font-size: 20px;
+          line-height: 22px;
+          font-family: "Roboto-Bold";
+          color: vars.$white;
+          margin-top: 0;
+        }
+
+        ul {
+          list-style: none;
+          margin-top: 30px;
+
+          li {
+            display: block;
+            margin-top: 20px;
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            a {
+              font-size: 16px;
+              line-height: 18px;
+              color: vars.$ft;
+              font-family: "Roboto-Regular";
+
+              &:hover {
+                color: vars.$white;
+              }
+            }
+          }
+        }
+      }
+
+      .last-box {
+        @extend.ft-box;
+
+        p {
+          font-size: 16px;
+          color: vars.$white;
+          line-height: 40px;
+          font-family: "Roboto-Regular";
+          max-width: 136px;
+          margin: 30px auto 0 0;
+
+          @include mix.breakpoint(sm) {
+            max-width: none;
+          }
+        }
+
+        a {
+          display: inline-block;
+          font-size: 16px;
+          line-height: 18px;
+          font-family: "Roboto-Bold";
+          background: vars.$yellow;
+          color: vars.$bg-color;
+          padding: 15px 30px;
+          margin-top: 30px;
+
+          &:hover {
+            background: vars.$white;
+          }
+        }
+      }
+    }
+
+    .last {
+      margin-top: 40px;
+      padding-top: 40px;
+      bottom: 40px;
+      border-top: 2px solid #fff;
+
+      .social {
+        float: left;
+        text-align: left;
+
+        @include mix.breakpoint(xxs) {
+          text-align: center;
+          float: none;
+        }
+
+        a {
+          font-size: 20px;
+          line-height: 22px;
+          color: vars.$white;
+          margin-left: 15px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          &:hover {
+            color: vars.$yellow;
+          }
+        }
+      }
+
+      .right-email {
+        text-align: right;
+        float: right;
+
+        @include mix.breakpoint(xxs) {
+          text-align: center;
+          margin-top: 20px;
+          float: none;
+        }
+        a {
+          display: inline-block;
+          font-size: 18px;
+          line-height: 20px;
+          color: vars.$white;
+          font-family: "Roboto-Bold";
+
+          &:hover {
+            color: vars.$yellow;
+          }
+        }
+      }
+    }
+  }
+}
